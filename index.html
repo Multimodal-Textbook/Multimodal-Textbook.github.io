@@ -5,12 +5,13 @@
   <meta charset="utf-8">
   <meta name="description" content="A Multimodal Textbook for Vision-Language Pretraining">
   <meta name="keywords" content="Multimodal Textbook">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>2.5 Years in Class: A Multimodal Textbook for Vision-Language Pretraining</title>
   <style>
     /* 设置全局字体 */
     * {
       font-family: Helvetica, Arial, sans-serif !important;
+      box-sizing: border-box;
     }
     
     /* 特别设置标题样式，保持原有粗细但使用相同字体 */
@@ -23,59 +24,95 @@
       font-family: Helvetica, Arial, sans-serif !important;
       font-weight: 500;  /* 副标题稍微淡一些 */
     }
-    /* 全局基础字体大小 */
+
+    /* 全局基础字体大小 - 使用vw单位实现响应式 */
     html {
-      font-size: 16px;  /* 设置基础字体大小 */
+      font-size: calc(14px + 0.4vw);  /* 基础字体大小随视窗宽度变化 */
     }
 
     /* 主标题 */
     .title.is-1 {
-      font-size: 2.5rem !important;  /* 40px */
+      font-size: calc(2rem + 1vw) !important;
     }
 
     /* 副标题 */
     .subtitle.is-3 {
-      font-size: 1.75rem !important;  /* 28px */
+      font-size: calc(1.5rem + 0.5vw) !important;
     }
 
     /* 作者名称和机构 */
     .author-name {
-      font-size: 1.4rem !important;  /* 20px */
+      font-size: calc(1.1rem + 0.3vw) !important;
     }
+    
     .author-institution {
-      font-size: 1.2rem !important;  /* 16px */
+      font-size: calc(1rem + 0.2vw) !important;
     }
 
     /* 正文内容 */
     p, .content {
-      font-size: 1.3rem !important;  /* 16px */
-      line-height: 1.4 !important;  /* 行高 */
+      font-size: calc(1rem + 0.2vw) !important;
+      line-height: 1.6 !important;
     }
 
     /* 章节标题 */
     .section-title {
-      font-size: 1.5rem !important;  /* 24px */
+      font-size: calc(1.3rem + 0.4vw) !important;
     }
 
-    /* 响应式设计 - 在小屏幕上调整大小 */
+    /* 容器最大宽度限制 */
+    .container {
+      max-width: 95vw;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    /* 图片响应式处理 */
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* 表格响应式处理 */
+    table {
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+    }
+
+    /* 导航栏响应式 */
+    .navbar {
+      padding: 1rem;
+    }
+
     @media screen and (max-width: 768px) {
-      .title.is-1 {
-        font-size: 2rem !important;  /* 32px */
+      .navbar-menu {
+        display: none;
       }
-      .subtitle.is-3 {
-        font-size: 1.5rem !important;  /* 24px */
+      
+      .navbar-burger {
+        display: block;
       }
-      .author-name {
-        font-size: 1.1rem !important;  /* 17.6px */
+
+      .columns {
+        margin: 0;
+      }
+
+      .column {
+        padding: 0.5rem;
       }
     }
 
     /* 添加标题背景样式 */
     .hero {
       background-image: url('static/images/logo.png');
-      background-size: cover;
+      background-size: contain;
+      background-repeat: no-repeat;
       background-position: center;
       position: relative;
+      min-height: 50vh;
+      width: 100%;
+      height: auto;
     }
 
     .hero::before {
@@ -85,13 +122,42 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(255, 255, 255, 0.3); /* 白色半透明遮罩 */
+      background: rgba(255, 255, 255, 0.3);
       z-index: 1;
     }
 
     .hero-body {
       position: relative;
       z-index: 2;
+      padding: 3rem 1.5rem;
+    }
+
+    /* 按钮响应式样式 */
+    .button {
+      margin: 0.5rem;
+      white-space: nowrap;
+    }
+
+    /* 卡片响应式布局 */
+    .box {
+      margin: 1rem 0;
+      padding: 1rem;
+    }
+
+    /* 视频容器响应式 */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+    }
+
+    .video-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
     }
   </style>
 
